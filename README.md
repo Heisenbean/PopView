@@ -5,7 +5,7 @@
 这种效果类似微信右上角的弹窗,但不同的是,`PopView`加了转场动画,这样看上去更酷一点.
 
 ###微信的长这个样子
-<img src="https://github.com/Heisenbean/PopView/raw/master/ScreenShot/0.png" height="568" width="320" />
+<img src="https://github.com/Heisenbean/PopView/raw/master/ScreenShot/5.png" height="568" width="320" />
 
 ###我的目前看起来是这个样子
 <img src="https://github.com/Heisenbean/PopView/raw/master/ScreenShot/1.png" height="568" width="320" />
