@@ -70,6 +70,7 @@ extension PopViewController{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
         let cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
+//        cell.contentView.backgroundColor = UIColor.colorFromRGB(0x4d4d4d, alpha: 1.0)
         switch indexPath.row{
         case 0:
             cell.textLabel?.text = "发布"

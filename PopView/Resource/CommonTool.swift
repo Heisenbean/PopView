@@ -21,3 +21,23 @@ import UIKit
 public let DidClickedPopViewCell1Noti = "DidClickedPopViewCell1Noti"
 public let DidClickedPopViewCell2Noti = "DidClickedPopViewCell2Noti"
 public let DidClickedPopViewCell3Noti = "DidClickedPopViewCell3Noti"
+
+
+extension UIColor {
+    
+    
+    class func colorFromRGB(rgbValue: UInt, alpha: CGFloat) -> UIColor {
+        
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
+    class func randomColor() -> UIColor {
+        
+        return UIColor(red: CGFloat(arc4random_uniform(256)) / 255, green: CGFloat(arc4random_uniform(256)) / 255, blue: CGFloat(arc4random_uniform(256)) / 255, alpha: 1.0)
+    }
+}

@@ -46,7 +46,6 @@ class ViewController: UIViewController {
     }
     
     
-    let animationDelegate = PopoverAnimation()
 
     @IBAction func didClickedLeftButton() {
         modalPopView(PopViewType.Left)
@@ -60,6 +59,9 @@ class ViewController: UIViewController {
     @IBAction func didClickeRightButton() {
         modalPopView(PopViewType.Right)
     }
+    
+    let animationDelegate = PopoverAnimation()
+
     
     func modalPopView(type:PopViewType){
         let popVc = PopViewController()
