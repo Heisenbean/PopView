@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fm1-ps-C9S">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PopView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0by-jC-pRp">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="➕" id="TY5-3f-xQf">
+                            <connections>
+                                <action selector="didClickedLeftButton" destination="BYZ-38-t0r" id="pXG-64-ugh"/>
+                            </connections>
+                        </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ReA-YH-gjZ">
+                            <rect key="frame" x="285" y="7" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <state key="normal" title="➕"/>
+                            <connections>
+                                <action selector="didClickedCenterButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="X7U-ua-61B"/>
+                            </connections>
+                        </button>
+                        <barButtonItem key="rightBarButtonItem" title="➕" id="ZBc-FR-cXi">
+                            <connections>
+                                <action selector="didClickeRightButton" destination="BYZ-38-t0r" id="dr2-lf-aLo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1103" y="389"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CQ3-wL-EHO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fm1-ps-C9S" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oLd-A8-5wt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qX5-Ae-OCA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="biQ-cc-dII" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="274" y="-303"/>
+        </scene>
+    </scenes>
+</document>
