@@ -14,8 +14,22 @@ enum PopViewType{
     case Right
 }
 
+let RowHeight:CGFloat = 44
+
+var dataSource = ["发布","扫一扫","添加好友"]
+
+/**
+ *  popView展现位置的代理
+ */
 protocol PopViewControllerDelegate:NSObjectProtocol{
     func didClickedPopButton(type:PopViewType)
+}
+
+/**
+ *  popViewCell选择的代理
+ */
+protocol DidSelectPopViewCellDelegate:NSObjectProtocol{
+    func didSelectRowAtIndexPath(indexPath: NSIndexPath)
 }
 
 class PopViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
@@ -25,6 +39,8 @@ class PopViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     var popType:PopViewType?
     
     weak var delegate:PopViewControllerDelegate?
+    
+    weak var selectDelegate:DidSelectPopViewCellDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,29 +72,21 @@ class PopViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 extension PopViewController{
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
+        return RowHeight
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
+        return RowHeight
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int{
-        return 3
+        return dataSource.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
         let cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
-//        cell.contentView.backgroundColor = UIColor.colorFromRGB(0x4d4d4d, alpha: 1.0)
-        switch indexPath.row{
-        case 0:
-            cell.textLabel?.text = "发布"
-        case 1:
-            cell.textLabel?.text = "扫一扫"
-        default:
-            cell.textLabel?.text = "添加好友"
-        }
+        cell.textLabel?.text = dataSource[indexPath.row]
         return cell
     }
     
@@ -89,15 +97,7 @@ extension PopViewController{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row{
-        case 0:
-            postNotification(DidClickedPopViewCell1Noti)
-        case 1:
-            postNotification(DidClickedPopViewCell2Noti)
-        default:
-            postNotification(DidClickedPopViewCell3Noti)
-        }
-        
+        selectDelegate?.didSelectRowAtIndexPath(indexPath)
     }
 
 }

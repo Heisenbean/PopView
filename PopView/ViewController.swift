@@ -14,39 +14,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didClickedFirstCell", name: DidClickedPopViewCell1Noti, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didClickedSecondCell", name: DidClickedPopViewCell2Noti, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didClickedThirdCell", name: DidClickedPopViewCell3Noti, object: nil)
-
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-    func didClickedFirstCell(){
-        // modal/push Other Controller
-        print(__FUNCTION__)
-    }
-    
-    func didClickedSecondCell(){
-        print(__FUNCTION__)
-    }
-    
-    func didClickedThirdCell(){
-        print(__FUNCTION__)
-    }
-    
-    
-
     @IBAction func didClickedLeftButton() {
         modalPopView(PopViewType.Left)
     }
@@ -69,9 +36,14 @@ class ViewController: UIViewController {
         popVc.transitioningDelegate = animationDelegate
         animationDelegate.popViewType = type
         popVc.modalPresentationStyle = UIModalPresentationStyle.Custom
+        popVc.selectDelegate = self
         presentViewController(popVc, animated: true, completion: nil)
     }
-    
+}
 
+extension ViewController:DidSelectPopViewCellDelegate{
+    func didSelectRowAtIndexPath(indexPath: NSIndexPath) {
+        print("点击了第\(indexPath.row)个")
+    }
 }
 
