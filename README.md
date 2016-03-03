@@ -19,38 +19,7 @@
 
 1.将`Resource`文件夹拖入到工程中    
 
-2.点击事件通知的添加和移除
-				
-	 override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didClickedFirstCell", name: DidClickedPopViewCell1Noti, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didClickedSecondCell", name: DidClickedPopViewCell2Noti, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didClickedThirdCell", name: DidClickedPopViewCell3Noti, object: nil)
-
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-    
-3.点击事件的实现
-
-	 func didClickedFirstCell(){
-        // modal/push Other Controller
-        print(__FUNCTION__)
-    }
-    
-    func didClickedSecondCell(){
-        print(__FUNCTION__)
-    }
-    
-    func didClickedThirdCell(){
-        print(__FUNCTION__)
-    }
-
-4.声明转场动画代理
+2.选择popView的展现位置`左,中,右`
 
 	@IBAction func didClickedLeftButton() {
         modalPopView(PopViewType.Left)
@@ -64,19 +33,29 @@
     @IBAction func didClickeRightButton() {
         modalPopView(PopViewType.Right)
     }
+  
     
-    let animationDelegate = PopoverAnimation()
+3.遵守popView的两个代理方法
 
     func modalPopView(type:PopViewType){
         let popVc = PopViewController()
         popVc.popType = type
         popVc.transitioningDelegate = animationDelegate
-        animationDelegate.popViewType = type
         popVc.modalPresentationStyle = UIModalPresentationStyle.Custom
+        popVc.selectDelegate = self
+        animationDelegate.popViewType = type
         presentViewController(popVc, animated: true, completion: nil)
-    }
+    }    
     
-    
+4.代理方法的实现
+
+	extension ViewController:DidSelectPopViewCellDelegate{
+	    func didSelectRowAtIndexPath(indexPath: NSIndexPath) {
+	        print("点击了第\(indexPath.row)个")
+	    }
+	}
+##具体实例请下载项目,参照`ViewController`
+
 ##声明:
 1.已适配3.5inch~5.5inch.    
 2.iOS8以上可用,iOS8以下没测试过.    
