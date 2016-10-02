@@ -59,4 +59,4 @@
 ##声明:
 1.已适配3.5inch~5.5inch.    
 2.iOS8以上可用,iOS8以下没测试过.    
-3.有问题随时issue或者邮箱<hdbphil@gmail>联系我.
+3.有问题随时issue或者邮箱<heisenbean.me@gmail>联系我.
