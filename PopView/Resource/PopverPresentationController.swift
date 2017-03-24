@@ -9,14 +9,14 @@
 import UIKit
 
 enum PopViewFrame{
-    case Left
-    case Center
-    case Right
+    case left
+    case center
+    case right
 }
 
 class PopverPresentationController: UIPresentationController {
     /// 展现视图的大小
-    var presentedFrame: CGRect = CGRectZero
+    var presentedFrame: CGRect = CGRect.zero
     
    internal var popViewFrame:PopViewType?
     
@@ -24,9 +24,9 @@ class PopverPresentationController: UIPresentationController {
 
         let v = UIView()
         // 遮罩
-        v.backgroundColor = UIColor.lightGrayColor()
+        v.backgroundColor = UIColor.lightGray
         v.alpha = 0.3
-        let tap = UITapGestureRecognizer(target: self, action: "didClickedCoverView")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(PopverPresentationController.didClickedCoverView))
         v.addGestureRecognizer(tap)
         return v
     }()
@@ -36,12 +36,12 @@ class PopverPresentationController: UIPresentationController {
     点击遮罩
     */
    internal func didClickedCoverView(){
-        self.presentedViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.presentedViewController.dismiss(animated: true, completion: nil)
     }
     
     // 构造方法
- override init(presentedViewController: UIViewController, presentingViewController: UIViewController) {
-        super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
+ override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
     
     
@@ -50,26 +50,26 @@ class PopverPresentationController: UIPresentationController {
         
         var rect:CGRect?
         switch popViewFrame!{
-        case .Left:
+        case .left:
             if systemVersionLessThan_iOS9(){
-                rect = CGRectMake(2, 65, 100, 150)
+                rect = CGRect(x: 2, y: 65, width: 100, height: 150)
             }else{
-                rect = CGRectMake(5, 65, 100, 150)
+                rect = CGRect(x: 5, y: 65, width: 100, height: 150)
             }
-        case .Center:
-            rect = CGRectMake((UIScreen.mainScreen().bounds.width - 120) / 2, 65, 100, 150)
+        case .center:
+            rect = CGRect(x: (UIScreen.main.bounds.width - 120) / 2, y: 65, width: 100, height: 150)
         default:
             if systemVersionLessThan_iOS9(){
-                rect = CGRectMake((UIScreen.mainScreen().bounds.width - 121), 65, 100, 150)
+                rect = CGRect(x: (UIScreen.main.bounds.width - 121), y: 65, width: 100, height: 150)
             }else{
-                rect = CGRectMake((UIScreen.mainScreen().bounds.width - 125), 65, 100, 150)
+                rect = CGRect(x: (UIScreen.main.bounds.width - 125), y: 65, width: 100, height: 150)
             }
         }
 
-        presentedView()!.frame = rect!
+        presentedView!.frame = rect!
         
         // 设置遮罩的frame
         coverView.frame = containerView!.bounds
-        containerView! .insertSubview(coverView, atIndex: 0)
+        containerView! .insertSubview(coverView, at: 0)
     }
 }

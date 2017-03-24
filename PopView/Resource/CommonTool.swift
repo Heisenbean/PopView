@@ -10,23 +10,18 @@ import UIKit
 
     /// 是否小于iOS9
     public func systemVersionLessThan_iOS9() ->Bool{
-        let currentVersion = UIDevice.currentDevice().systemVersion
-        let flag = currentVersion.compare("9.0.0", options: .NumericSearch)
-        if flag == .OrderedAscending{   //小于iOS9
+        let currentVersion = UIDevice.current.systemVersion
+        let flag = currentVersion.compare("9.0.0", options: .numeric)
+        if flag == .orderedAscending{   //小于iOS9
             return true
         }
         return false
     }
 
-public let DidClickedPopViewCell1Noti = "DidClickedPopViewCell1Noti"
-public let DidClickedPopViewCell2Noti = "DidClickedPopViewCell2Noti"
-public let DidClickedPopViewCell3Noti = "DidClickedPopViewCell3Noti"
-
-
 extension UIColor {
     
     
-    class func colorFromRGB(rgbValue: UInt, alpha: CGFloat) -> UIColor {
+    class func colorFromRGB(_ rgbValue: UInt, alpha: CGFloat) -> UIColor {
         
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,

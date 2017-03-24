@@ -15,34 +15,34 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didClickedLeftButton() {
-        modalPopView(PopViewType.Left)
+        modalPopView(PopViewType.left)
     }
 
     @IBAction func didClickedCenterButton() {
-        modalPopView(PopViewType.Center)
+        modalPopView(PopViewType.center)
     }
 
 
     @IBAction func didClickeRightButton() {
-        modalPopView(PopViewType.Right)
+        modalPopView(PopViewType.right)
     }
     
     let animationDelegate = PopoverAnimation()
 
     
-    func modalPopView(type:PopViewType){
+    func modalPopView(_ type:PopViewType){
         let popVc = PopViewController()
         popVc.popType = type
         popVc.transitioningDelegate = animationDelegate
         animationDelegate.popViewType = type
-        popVc.modalPresentationStyle = UIModalPresentationStyle.Custom
+        popVc.modalPresentationStyle = UIModalPresentationStyle.custom
         popVc.selectDelegate = self
-        presentViewController(popVc, animated: true, completion: nil)
+        present(popVc, animated: true, completion: nil)
     }
 }
 
 extension ViewController:DidSelectPopViewCellDelegate{
-    func didSelectRowAtIndexPath(indexPath: NSIndexPath) {
+    func didSelectRowAtIndexPath(_ indexPath: IndexPath) {
         print("点击了第\(indexPath.row)个")
     }
 }

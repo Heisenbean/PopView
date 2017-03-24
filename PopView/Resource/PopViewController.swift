@@ -9,9 +9,9 @@
 import UIKit
 
 enum PopViewType{
-    case Left
-    case Center
-    case Right
+    case left
+    case center
+    case right
 }
 
 let RowHeight:CGFloat = 44
@@ -22,14 +22,14 @@ var dataSource = ["发布","扫一扫","添加好友"]
  *  popView展现位置的代理
  */
 protocol PopViewControllerDelegate:NSObjectProtocol{
-    func didClickedPopButton(type:PopViewType)
+    func didClickedPopButton(_ type:PopViewType)
 }
 
 /**
  *  popViewCell选择的代理
  */
 protocol DidSelectPopViewCellDelegate:NSObjectProtocol{
-    func didSelectRowAtIndexPath(indexPath: NSIndexPath)
+    func didSelectRowAtIndexPath(_ indexPath: IndexPath)
 }
 
 class PopViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
@@ -47,21 +47,21 @@ class PopViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         setupViews(popType!)
     }
     
-    func setupViews(popViewtype:PopViewType) {
+    func setupViews(_ popViewtype:PopViewType) {
         var imgStr = ""
         switch popViewtype{
-        case .Left:
+        case .left:
             imgStr = "popover_background_left"
-        case .Center:
+        case .center:
             imgStr = "popover_background_center"
         default:
             imgStr = "popover_background_right"
         }
         let img = UIImage(named: imgStr)
         let imgView = UIImageView(image: img)
-        imgView.frame.size = CGSizeMake(120, 170)
+        imgView.frame.size = CGSize(width: 130, height: 170)
         view.addSubview(imgView)
-        myTableView.frame = CGRectMake(10, 17, 100, 140)
+        myTableView.frame = CGRect(x: 10, y: 17, width: 110, height: 140)
         myTableView.delegate = self
         myTableView.dataSource = self
         view.addSubview(myTableView)
@@ -71,32 +71,27 @@ class PopViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
 
 extension PopViewController{
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return RowHeight
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return RowHeight
     }
     
-    func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int{
-        return dataSource.count ?? 0
+    func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int{
+        return dataSource.count 
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = dataSource[indexPath.row]
         return cell
     }
     
-    func postNotification(noti:String){
-        dismissViewControllerAnimated(true, completion: { () -> Void in
-            NSNotificationCenter.defaultCenter().postNotificationName(noti, object: nil)
-        })
-    }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectDelegate?.didSelectRowAtIndexPath(indexPath)
     }
 
