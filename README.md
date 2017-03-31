@@ -13,11 +13,10 @@
 
 
 
-<img src="https://github.com/Heisenbean/PopView/raw/master/ScreenShot/1.png"/>
+<img src="https://github.com/Heisenbean/PopView/raw/master/ScreenShot/popView_snipshot.png"/>
 
 <img src="https://github.com/Heisenbean/PopView/raw/master/ScreenShot/4.gif" height="568" width="320" />
 
--
 
 ## 用法:  
 
