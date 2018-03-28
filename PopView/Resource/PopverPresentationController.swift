@@ -14,6 +14,11 @@ enum PopViewFrame{
     case right
 }
 
+var popViewY : CGFloat = 65.0
+var mainScreenWidth = UIScreen.main.bounds.size.width
+var popViewWidth : CGFloat = 100.0
+var popViewHeight : CGFloat = 150.0
+
 class PopverPresentationController: UIPresentationController {
     /// 展现视图的大小
     var presentedFrame: CGRect = CGRect.zero
@@ -49,20 +54,32 @@ class PopverPresentationController: UIPresentationController {
         super.containerViewWillLayoutSubviews()
         
         var rect:CGRect?
+       
+        if UIDevice.current.isiPhoneX() {
+            popViewY = 80
+            
+        }else{
+            
+        }
+        
         switch popViewFrame!{
         case .left:
             if systemVersionLessThan_iOS9(){
-                rect = CGRect(x: 2, y: 65, width: 100, height: 150)
+                rect = CGRect(x: 2, y: popViewY, width: popViewWidth, height: popViewHeight)
             }else{
-                rect = CGRect(x: 5, y: 65, width: 100, height: 150)
+                let popViewX : CGFloat = UIDevice.current.isiPhoneX() ? 7 : 5
+                rect = CGRect(x: popViewX, y: popViewY, width: popViewWidth, height: popViewHeight)
             }
         case .center:
-            rect = CGRect(x: (UIScreen.main.bounds.width - 120) / 2, y: 65, width: 100, height: 150)
+            let popViewX : CGFloat = UIDevice.current.isiPhoneX() ?  (mainScreenWidth - 120) / 2 - 5 :  (mainScreenWidth - 120) / 2
+            rect = CGRect(x:popViewX, y: popViewY, width: popViewWidth, height: popViewHeight)
         default:
             if systemVersionLessThan_iOS9(){
-                rect = CGRect(x: (UIScreen.main.bounds.width - 121), y: 65, width: 100, height: 150)
+                rect = CGRect(x: (mainScreenWidth - 121), y: popViewY, width: popViewWidth, height: popViewHeight)
             }else{
-                rect = CGRect(x: (UIScreen.main.bounds.width - 125), y: 65, width: 100, height: 150)
+                let popViewX : CGFloat = UIDevice.current.isiPhoneX() ?  mainScreenWidth - 138 :  mainScreenWidth - 125
+
+                rect = CGRect(x: popViewX, y: popViewY, width: popViewWidth, height: popViewHeight)
             }
         }
 

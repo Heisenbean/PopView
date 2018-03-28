@@ -213,6 +213,7 @@
 				TargetAttributes = {
 					357F55AD1C0B708E00675DBF = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = CYTV43BJ3R;
 						LastSwiftMigration = 0820;
 					};
 					357F55C11C0B708F00675DBF = {
@@ -429,6 +430,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CYTV43BJ3R;
 				INFOPLIST_FILE = PopView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -442,6 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CYTV43BJ3R;
 				INFOPLIST_FILE = PopView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
