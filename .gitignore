@@ -1,6 +1,7 @@
 # Xcode
 #
 build/
+.DS_Stor
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -31,3 +32,4 @@ DerivedData
 # Carthage/Checkouts
 
 Carthage/Build
+.DS_Store
